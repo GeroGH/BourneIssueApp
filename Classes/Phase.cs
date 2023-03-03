@@ -7,7 +7,6 @@ namespace BourneIssueApp.Classes
     public class Phase
     {
         public int Number { get; set; }
-        public string Fabricator { get; set; }
         public bool HasPlates { get; set; }
         public bool HasProfiles { get; set; }
         public List<Part> Profiles { get; set; }
@@ -37,7 +36,7 @@ namespace BourneIssueApp.Classes
             this.Plates = new List<Part>();
             this.Parts = new List<Part>();
 
-            this.PhaseFolder = Path.Combine(UserInfo.MainFolder, "PHASE" + " " + this.Number + " Fabricator");
+            this.PhaseFolder = Path.Combine(UserInfo.MainFolder, "PHASE" + " " + this.Number);
             this.GasFolder = Path.Combine(this.PhaseFolder, "01 GA DRG'S");
             this.AssembliesFolder = Path.Combine(this.PhaseFolder, "02 ASSEMBLY DRG'S");
             this.PlatesFolder = Path.Combine(this.PhaseFolder, "03 PLATES FITTINGS DRG'S");

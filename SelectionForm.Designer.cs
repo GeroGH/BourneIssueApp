@@ -44,6 +44,7 @@
             this.GroupBoxOpenFolder = new System.Windows.Forms.GroupBox();
             this.CheckBoxOpenMainFolder = new System.Windows.Forms.CheckBox();
             this.AppVersion = new System.Windows.Forms.Label();
+            this.GroupBoxSelectAll = new System.Windows.Forms.CheckBox();
             this.GroupBoxVersion = new System.Windows.Forms.GroupBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ComboBoxPrinter = new System.Windows.Forms.ComboBox();
@@ -53,8 +54,7 @@
             this.CheckBoxReportsAssembly = new System.Windows.Forms.CheckBox();
             this.TextRevisionAditionalReport = new System.Windows.Forms.TextBox();
             this.TextAditionalReport = new System.Windows.Forms.TextBox();
-            this.TextBoxFabricator = new System.Windows.Forms.TextBox();
-            this.Fabricator = new System.Windows.Forms.GroupBox();
+            this.GroupBoxToogleSelection = new System.Windows.Forms.GroupBox();
             this.groupBoxPrinter = new System.Windows.Forms.GroupBox();
             this.LabelAssemblyRev = new System.Windows.Forms.Label();
             this.LabelBoltRev = new System.Windows.Forms.Label();
@@ -66,7 +66,7 @@
             this.GroupBoxBimFiles.SuspendLayout();
             this.GroupBoxOpenFolder.SuspendLayout();
             this.GroupBoxVersion.SuspendLayout();
-            this.Fabricator.SuspendLayout();
+            this.GroupBoxToogleSelection.SuspendLayout();
             this.groupBoxPrinter.SuspendLayout();
             this.GroupBoxReports.SuspendLayout();
             this.SuspendLayout();
@@ -280,8 +280,20 @@
             this.AppVersion.Name = "AppVersion";
             this.AppVersion.Size = new System.Drawing.Size(43, 13);
             this.AppVersion.TabIndex = 31;
-            this.AppVersion.Text = "14.01 a";
+            this.AppVersion.Text = "12.72 a";
             this.ToolTip.SetToolTip(this.AppVersion, "Current version of the application");
+            // 
+            // GroupBoxSelectAll
+            // 
+            this.GroupBoxSelectAll.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.GroupBoxSelectAll.Location = new System.Drawing.Point(25, 21);
+            this.GroupBoxSelectAll.Name = "GroupBoxSelectAll";
+            this.GroupBoxSelectAll.Size = new System.Drawing.Size(159, 18);
+            this.GroupBoxSelectAll.TabIndex = 6;
+            this.GroupBoxSelectAll.Text = "Toggle Common Selections";
+            this.ToolTip.SetToolTip(this.GroupBoxSelectAll, "Toggles the selection for the\r\nmost common selections");
+            this.GroupBoxSelectAll.UseVisualStyleBackColor = true;
+            this.GroupBoxSelectAll.CheckedChanged += new System.EventHandler(this.GroupBoxSelectAll_CheckedChanged);
             // 
             // GroupBoxVersion
             // 
@@ -341,8 +353,8 @@
             this.CheckBoxReportsBolts.Size = new System.Drawing.Size(120, 17);
             this.CheckBoxReportsBolts.TabIndex = 23;
             this.CheckBoxReportsBolts.Text = "Export Bolt Reports ";
-            this.ToolTip.SetToolTip(this.CheckBoxReportsBolts, "Select to export bolt reports:\r\nBEL-Bolt-Assembly-List.xsr\r\nBEL-Bolt-Summary-Site" +
-        "-List With Comments.xsr");
+            this.ToolTip.SetToolTip(this.CheckBoxReportsBolts, "Select to export bolt reports:\r\nBEL-Bolt-Summary-Site-List.xsr\r\nBEL-Bolt-Assembly" +
+        "-List.xsr");
             this.CheckBoxReportsBolts.UseVisualStyleBackColor = true;
             // 
             // CheckBoxReportsAssembly
@@ -354,7 +366,8 @@
             this.CheckBoxReportsAssembly.Size = new System.Drawing.Size(143, 17);
             this.CheckBoxReportsAssembly.TabIndex = 22;
             this.CheckBoxReportsAssembly.Text = "Export Assembly Reports";
-            this.ToolTip.SetToolTip(this.CheckBoxReportsAssembly, "Select to export assembly reports:\r\nBEL-Assembly-List.xsr");
+            this.ToolTip.SetToolTip(this.CheckBoxReportsAssembly, "Select to export assembly reports:\r\nBEL-Assembly-List.xsr\r\nBEL-Strumis-Upload.xls" +
+        "");
             this.CheckBoxReportsAssembly.UseVisualStyleBackColor = true;
             // 
             // TextRevisionAditionalReport
@@ -376,27 +389,16 @@
             this.ToolTip.SetToolTip(this.TextAditionalReport, "Add report name as text in the field\r\nto export different type of report\r\n");
             this.TextAditionalReport.TextChanged += new System.EventHandler(this.TextAditionalReport_TextChanged);
             // 
-            // TextBoxFabricator
+            // GroupBoxToogleSelection
             // 
-            this.TextBoxFabricator.Location = new System.Drawing.Point(6, 19);
-            this.TextBoxFabricator.Name = "TextBoxFabricator";
-            this.TextBoxFabricator.Size = new System.Drawing.Size(188, 20);
-            this.TextBoxFabricator.TabIndex = 32;
-            this.TextBoxFabricator.Text = "Type fabricator name here ...";
-            this.ToolTip.SetToolTip(this.TextBoxFabricator, "Type the fabricator name as text in the field to\r\nexport into different folders. " +
-        "This will additionally\r\ncreate the reports with a suffix as the fabricator name." +
-        "");
-            // 
-            // Fabricator
-            // 
-            this.Fabricator.Controls.Add(this.TextBoxFabricator);
-            this.Fabricator.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Fabricator.Location = new System.Drawing.Point(221, 12);
-            this.Fabricator.Name = "Fabricator";
-            this.Fabricator.Size = new System.Drawing.Size(200, 49);
-            this.Fabricator.TabIndex = 21;
-            this.Fabricator.TabStop = false;
-            this.Fabricator.Text = "Fabricator:";
+            this.GroupBoxToogleSelection.Controls.Add(this.GroupBoxSelectAll);
+            this.GroupBoxToogleSelection.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.GroupBoxToogleSelection.Location = new System.Drawing.Point(221, 12);
+            this.GroupBoxToogleSelection.Name = "GroupBoxToogleSelection";
+            this.GroupBoxToogleSelection.Size = new System.Drawing.Size(200, 49);
+            this.GroupBoxToogleSelection.TabIndex = 21;
+            this.GroupBoxToogleSelection.TabStop = false;
+            this.GroupBoxToogleSelection.Text = "Selection:";
             // 
             // groupBoxPrinter
             // 
@@ -476,7 +478,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(430, 490);
             this.Controls.Add(this.groupBoxPrinter);
-            this.Controls.Add(this.Fabricator);
+            this.Controls.Add(this.GroupBoxToogleSelection);
             this.Controls.Add(this.GroupBoxVersion);
             this.Controls.Add(this.GroupBoxOpenFolder);
             this.Controls.Add(this.GroupBoxBimFiles);
@@ -502,8 +504,7 @@
             this.GroupBoxOpenFolder.PerformLayout();
             this.GroupBoxVersion.ResumeLayout(false);
             this.GroupBoxVersion.PerformLayout();
-            this.Fabricator.ResumeLayout(false);
-            this.Fabricator.PerformLayout();
+            this.GroupBoxToogleSelection.ResumeLayout(false);
             this.groupBoxPrinter.ResumeLayout(false);
             this.GroupBoxReports.ResumeLayout(false);
             this.GroupBoxReports.PerformLayout();
@@ -520,6 +521,7 @@
         public global::System.Windows.Forms.CheckBox CheckBoxIFC;
         public global::System.Windows.Forms.CheckBox CheckBoxBSWX;
         public global::System.Windows.Forms.CheckBox CheckBoxOpenMainFolder;
+        public global::System.Windows.Forms.CheckBox GroupBoxSelectAll;
         private global::System.Windows.Forms.TextBox TextRevisionBswx;
         private global::System.Windows.Forms.TextBox TextRevisionIfc;
         public global::System.Windows.Forms.Label LabelBswxRev;
@@ -535,7 +537,7 @@
         private System.Windows.Forms.ToolTip ToolTip;
         private System.ComponentModel.IContainer Components;
         private System.Windows.Forms.ComboBox ComboBoxPrinter;
-        public System.Windows.Forms.GroupBox Fabricator;
+        public System.Windows.Forms.GroupBox GroupBoxToogleSelection;
         public System.Windows.Forms.GroupBox groupBoxPrinter;
         private System.ComponentModel.IContainer components;
         private System.Windows.Forms.TextBox TextRevisionAssembly;
@@ -549,7 +551,6 @@
         private System.Windows.Forms.TextBox TextAditionalReport;
         public System.Windows.Forms.CheckBox CheckAdditionalReports;
         public System.Windows.Forms.GroupBox GroupBoxReports;
-        private System.Windows.Forms.TextBox TextBoxFabricator;
     }
 }
 
