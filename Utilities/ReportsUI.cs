@@ -10,7 +10,6 @@ namespace BourneIssueApp.Utilities
         public static void ExportAssemblyReports(string rev, string reportsFolder, int number)
         {
             ExportReport("-BEL-Assembly-List.xsr", rev, reportsFolder, number);
-            ExportReport("-BEL-Strumis-Upload.xls", rev, reportsFolder, number);
 
             ExportReport("-BP-Assembly-List.xsr", rev, reportsFolder, number);
             ExportReport("-BP-Fitting-List.xsr", rev, reportsFolder, number);
@@ -47,10 +46,19 @@ namespace BourneIssueApp.Utilities
             var date = DateTime.Now.ToString("dd.MM.yy");
             var revNo = (rev == string.Empty) ? string.Empty : " REV " + rev;
             var reportName = UserInfo.ModelNumber + "-Phase " + number + reportType + revNo + " " + date + reportFormat;
+
+            if (reportName.Contains(".xls"))
+            {
+                var leftPart = reportName.Substring(0, reportName.IndexOf(".xls"));
+                var rightPart = reportName.Substring(reportName.IndexOf(".xls") + ".xls".Length);
+                reportName = leftPart + rightPart;
+            }
+
+            reportName = reportName.Substring(0, reportName.IndexOf(reportFormat)) + " Fabricator " + reportFormat;
+
             var fileName = Path.Combine(reportsFolder, reportName);
             var tittle1 = "Phase " + number;
             var tittle2 = rev;
-
 
             Operation.CreateReportFromSelected(reportType, fileName, tittle1, tittle2, "");
         }

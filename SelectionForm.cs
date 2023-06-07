@@ -198,32 +198,6 @@ namespace BourneIssueApp
         {
             this.Close();
         }
-
-        private void GroupBoxSelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.GroupBoxSelectAll.CheckState == CheckState.Checked)
-            {
-                this.CheckBoxGA.CheckState = CheckState.Checked;
-                this.CheckBoxAssembly.CheckState = CheckState.Checked;
-                this.CheckBoxFitings.CheckState = CheckState.Checked;
-                this.CheckBoxReportsAssembly.CheckState = CheckState.Checked;
-                this.CheckBoxReportsBolts.CheckState = CheckState.Checked;
-                this.CheckBoxNC.CheckState = CheckState.Checked;
-                this.CheckBoxIFC.CheckState = CheckState.Checked;
-            }
-
-            if (this.GroupBoxSelectAll.CheckState == CheckState.Unchecked)
-            {
-                this.CheckBoxGA.CheckState = CheckState.Unchecked;
-                this.CheckBoxAssembly.CheckState = CheckState.Unchecked;
-                this.CheckBoxFitings.CheckState = CheckState.Unchecked;
-                this.CheckBoxReportsAssembly.CheckState = CheckState.Unchecked;
-                this.CheckBoxReportsBolts.CheckState = CheckState.Unchecked;
-                this.CheckBoxNC.CheckState = CheckState.Unchecked;
-                this.CheckBoxIFC.CheckState = CheckState.Unchecked;
-            }
-        }
-
         private void SelectionForm_Load(object sender, EventArgs e)
         {
             foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
