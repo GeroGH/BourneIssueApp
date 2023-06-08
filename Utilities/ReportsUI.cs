@@ -54,7 +54,7 @@ namespace BourneIssueApp.Utilities
                 reportName = leftPart + rightPart;
             }
 
-            reportName = reportName.Substring(0, reportName.IndexOf(reportFormat)) + " Fabricator " + reportFormat;
+            reportName = reportName.Substring(0, reportName.IndexOf(reportFormat)) + reportFormat;
 
             var fileName = Path.Combine(reportsFolder, reportName);
             var tittle1 = "Phase " + number;
