@@ -120,7 +120,7 @@ namespace BourneIssueApp
                     excutionForm.UpdateLabel("Exporting Plate Nc Files", phase.Number);
                     ModelUI.SelectParts(phase.Plates);
                     SystemIO.CreateFolder(phase.NcPlatesFolder);
-                    NcUI.Export(phase.NcPlatesFolder);
+                    NcUI.Export(phase.NcPlatesFolder, NCFileType.Plates);
                 }
             }
 
@@ -131,7 +131,7 @@ namespace BourneIssueApp
                     excutionForm.UpdateLabel("Exporting Profile Nc Files", phase.Number);
                     ModelUI.SelectParts(phase.Profiles);
                     SystemIO.CreateFolder(phase.NcProfilesFolder);
-                    NcUI.Export(phase.NcProfilesFolder);
+                    NcUI.Export(phase.NcProfilesFolder, NCFileType.Profiles);
                 }
             }
 

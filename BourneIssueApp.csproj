@@ -105,6 +105,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\BswxUI.cs" />
     <Compile Include="Utilities\DrawingsUI.cs" />
+    <Compile Include="Utilities\NCFileType.cs" />
     <Compile Include="Utilities\DrawingType.cs" />
     <Compile Include="Utilities\IfcUI.cs" />
     <Compile Include="Utilities\ModelUI.cs" />
