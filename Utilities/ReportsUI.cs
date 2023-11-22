@@ -2,6 +2,7 @@
 using System.IO;
 using BourneIssueApp.Classes;
 using Tekla.Structures.Model.Operations;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace BourneIssueApp.Utilities
 {
@@ -10,17 +11,12 @@ namespace BourneIssueApp.Utilities
         public static void ExportAssemblyReports(string rev, string reportsFolder, int number)
         {
             ExportReport("-BEL-Assembly-List.xsr", rev, reportsFolder, number);
-
-            ExportReport("-BP-Assembly-List.xsr", rev, reportsFolder, number);
-            ExportReport("-BP-Fitting-List.xsr", rev, reportsFolder, number);
         }
 
         public static void ExportBoltReports(string rev, string reportsFolder, int number)
         {
             ExportReport("-BEL-Bolt-Summary-Site-List With Comments.xsr", rev, reportsFolder, number);
             ExportReport("-BEL-Bolt-Assembly-List.xsr", rev, reportsFolder, number);
-
-            ExportReport("-BP-Full-Bolt-Summary-List.xsr", rev, reportsFolder, number);
         }
 
         public static void ExportAdditionalReport(string name, string rev, string reportsFolder, int number)
@@ -61,6 +57,31 @@ namespace BourneIssueApp.Utilities
             var tittle2 = rev;
 
             Operation.CreateReportFromSelected(reportType, fileName, tittle1, tittle2, "");
+
+            if (fileName.EndsWith(".doc"))
+            {
+                SaveDocFileAsPdf(fileName);
+            }
+        }
+        private static void SaveDocFileAsPdf(string fileName)
+        {
+            var wordApp = new Word.Application();
+
+            var docFile = wordApp.Documents.Open(fileName);
+            docFile.Activate();
+
+            docFile.PageSetup.TopMargin = wordApp.InchesToPoints(0.5f);
+            docFile.PageSetup.BottomMargin = wordApp.InchesToPoints(0.5f);
+            docFile.PageSetup.LeftMargin = wordApp.InchesToPoints(0.5f);
+            docFile.PageSetup.RightMargin = wordApp.InchesToPoints(0.5f);
+
+            var pdfPath = fileName.Replace(".doc", ".pdf");
+            object misValue = System.Reflection.Missing.Value;
+
+            docFile.SaveAs2(pdfPath, Word.WdSaveFormat.wdFormatPDF, misValue, misValue, misValue, misValue, misValue, misValue, misValue, misValue, misValue, misValue);
+
+            docFile.Close();
+            wordApp.Quit();
         }
     }
 }

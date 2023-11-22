@@ -278,9 +278,9 @@
             this.AppVersion.ForeColor = System.Drawing.SystemColors.Desktop;
             this.AppVersion.Location = new System.Drawing.Point(132, 20);
             this.AppVersion.Name = "AppVersion";
-            this.AppVersion.Size = new System.Drawing.Size(43, 13);
+            this.AppVersion.Size = new System.Drawing.Size(58, 13);
             this.AppVersion.TabIndex = 31;
-            this.AppVersion.Text = "23.01 a";
+            this.AppVersion.Text = "23.11.22 g";
             this.ToolTip.SetToolTip(this.AppVersion, "Current version of the application");
             // 
             // GroupBoxSelectAll

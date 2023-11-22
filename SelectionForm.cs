@@ -121,6 +121,8 @@ namespace BourneIssueApp
                     ModelUI.SelectParts(phase.Plates);
                     SystemIO.CreateFolder(phase.NcPlatesFolder);
                     NcUI.Export(phase.NcPlatesFolder, NCFileType.Plates);
+                    SystemIO.DeleteFolderIfEmpty(phase.NcPlatesFolder);
+
                 }
             }
 
@@ -132,6 +134,8 @@ namespace BourneIssueApp
                     ModelUI.SelectParts(phase.Profiles);
                     SystemIO.CreateFolder(phase.NcProfilesFolder);
                     NcUI.Export(phase.NcProfilesFolder, NCFileType.Profiles);
+                    SystemIO.DeleteFolderIfEmpty(phase.NcProfilesFolder);
+
                 }
             }
 
@@ -140,11 +144,9 @@ namespace BourneIssueApp
                 foreach (var phase in Catalog.Phases)
                 {
                     excutionForm.UpdateLabel("Exporting .ifc File", phase.Number);
-                    SystemIO.CreateFolder(UserInfo.TempIfcExportFolder);
                     SystemIO.CreateFolder(phase.IfcFolder);
                     ModelUI.SelectParts(phase.Parts);
-                    IfcUI.ExportIfcModel(this.TextRevisionIfc.Text, phase.Number);
-                    IfcUI.CopyIfcFile(this.TextRevisionIfc.Text, phase.IfcFolder, phase.Number);
+                    IfcUI.ExportIfcModel(phase.IfcFolder, this.TextRevisionIfc.Text, phase.Number);
                 }
             }
 
@@ -153,15 +155,13 @@ namespace BourneIssueApp
                 foreach (var phase in Catalog.Phases)
                 {
                     excutionForm.UpdateLabel("Exporting .bswx File", phase.Number);
-                    SystemIO.CreateFolder(UserInfo.TempBswxExportFolder);
                     SystemIO.CreateFolder(phase.BswxFolder);
                     ModelUI.SelectParts(phase.Parts);
-                    BswxUI.SaveBswxSettings(this.TextRevisionBswx.Text, phase.TempNcFilesFolder, phase.TempPdfFilesFolder, phase.Number);
+                    BswxUI.SaveBswxSettings(phase.BswxFolder, this.TextRevisionBswx.Text, phase.TempNcFilesFolder, phase.TempPdfFilesFolder, phase.Number);
                     BswxUI.CreateTempBswxFolders(phase.TempNcFilesFolder, phase.TempPdfFilesFolder);
                     BswxUI.CopyTempNcFiles(phase.TempNcFilesFolder, phase.NcPlatesFolder, phase.NcProfilesFolder);
                     BswxUI.CopyTempPdfFiles(phase.TempPdfFilesFolder, phase.PlatesFolder, phase.ProfilesFolder, phase.AssembliesFolder);
-                    BswxUI.ExportBswxFile(this.TextRevisionBswx.Text, phase.TempNcFilesFolder, phase.TempPdfFilesFolder, phase.Number);
-                    BswxUI.CopyBswxFile(this.TextRevisionBswx.Text, phase.BswxFolder, phase.Number);
+                    BswxUI.ExportBswxFile(phase.BswxFolder, this.TextRevisionBswx.Text, phase.TempNcFilesFolder, phase.TempPdfFilesFolder, phase.Number);
                     BswxUI.DeleteTempBswxFolders(phase.TempNcFilesFolder, phase.TempPdfFilesFolder);
                 }
             }

@@ -28,6 +28,19 @@ namespace BourneIssueApp.Utilities
             }
         }
 
+        public static void DeleteFolderIfEmpty(string path)
+        {
+            if (Directory.Exists(path))
+            {
+                var files = Directory.GetFiles(path);
+
+                if (files.Length == 0)
+                {
+                    Directory.Delete(path, false);
+                }
+            }
+        }
+
         public static void CopyFiles(string source, string destination)
         {
             if (!Directory.Exists(source))

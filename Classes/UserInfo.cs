@@ -8,8 +8,6 @@ namespace BourneIssueApp.Classes
     {
         public static string Initials { get; set; }
         public static string MainFolder { get; set; }
-        public static string TempIfcExportFolder { get; set; }
-        public static string TempBswxExportFolder { get; set; }
         public static string ModelFolder { get; set; }
         public static string ModelNumber { get; set; }
 
@@ -17,14 +15,11 @@ namespace BourneIssueApp.Classes
         {
             Initials = GetUserInitials();
 
-            MainFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Drawings");
-
-            TempIfcExportFolder = Path.Combine(@"C:\Exports Tekla " + Initials, "IFC Files");
-            TempBswxExportFolder = Path.Combine(@"C:\Exports Tekla " + Initials, "BSWX Files");
-
             var model = new Model();
             ModelFolder = model.GetInfo().ModelPath;
             ModelNumber = model.GetInfo().ModelName.Substring(0, 4);
+
+            MainFolder = Path.Combine(@"C:\Exports Tekla " + Initials, "Model " + ModelNumber);
         }
 
         public static string GetUserInitials()
