@@ -276,11 +276,11 @@
             // 
             this.AppVersion.AutoSize = true;
             this.AppVersion.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.AppVersion.Location = new System.Drawing.Point(132, 20);
+            this.AppVersion.Location = new System.Drawing.Point(118, 20);
             this.AppVersion.Name = "AppVersion";
-            this.AppVersion.Size = new System.Drawing.Size(58, 13);
+            this.AppVersion.Size = new System.Drawing.Size(70, 13);
             this.AppVersion.TabIndex = 31;
-            this.AppVersion.Text = "23.11.22 g";
+            this.AppVersion.Text = "2023.11.23 a";
             this.ToolTip.SetToolTip(this.AppVersion, "Current version of the application");
             // 
             // GroupBoxSelectAll
