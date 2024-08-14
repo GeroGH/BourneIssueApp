@@ -11,12 +11,13 @@ namespace BourneIssueApp.Utilities
         public static void ExportAssemblyReports(string rev, string reportsFolder, int number)
         {
             ExportReport("-BEL-Assembly-List.xsr", rev, reportsFolder, number);
+            ExportReport("-BEL-Assembly-Part-List.xsr", rev, reportsFolder, number);
         }
 
         public static void ExportBoltReports(string rev, string reportsFolder, int number)
         {
-            ExportReport("-BEL-Bolt-Summary-Site-List With Comments.xsr", rev, reportsFolder, number);
             ExportReport("-BEL-Bolt-Assembly-List.xsr", rev, reportsFolder, number);
+            ExportReport("-BEL-Bolt-Summary-Site-List With Comments.xsr", rev, reportsFolder, number);
         }
 
         public static void ExportAdditionalReport(string name, string rev, string reportsFolder, int number)
