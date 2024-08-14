@@ -280,7 +280,7 @@
             this.AppVersion.Name = "AppVersion";
             this.AppVersion.Size = new System.Drawing.Size(70, 13);
             this.AppVersion.TabIndex = 31;
-            this.AppVersion.Text = "2023.11.23 a";
+            this.AppVersion.Text = "2024.08.14 a";
             this.ToolTip.SetToolTip(this.AppVersion, "Current version of the application");
             // 
             // GroupBoxSelectAll

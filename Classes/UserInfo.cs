@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using Tekla.Structures.Model;
 
 namespace BourneIssueApp.Classes
@@ -17,7 +18,15 @@ namespace BourneIssueApp.Classes
 
             var model = new Model();
             ModelFolder = model.GetInfo().ModelPath;
-            ModelNumber = model.GetInfo().ModelName.Substring(0, 4);
+
+            ModelNumber = model.GetInfo().ModelName.Replace(".db1", "");
+            var patern = @"[a-zA-Z]?\d{4,8}\s{0,1}?-?\d*";
+            var match = Regex.Match(ModelNumber, patern).ToString();
+
+            if (match != string.Empty)
+            {
+                ModelNumber = match;
+            }
 
             MainFolder = Path.Combine(@"C:\Exports Tekla " + Initials, "Model " + ModelNumber);
         }

@@ -176,6 +176,8 @@ namespace BourneIssueApp
                 SystemIO.CreateFolderSuperseded(phase.AssembliesFolder);
                 SystemIO.CreateFolderSuperseded(phase.PlatesFolder);
                 SystemIO.CreateFolderSuperseded(phase.ProfilesFolder);
+                SystemIO.CreateFolderSuperseded(phase.NcPlatesFolder);
+                SystemIO.CreateFolderSuperseded(phase.NcProfilesFolder);
                 SystemIO.CreateFolderSuperseded(phase.ReportsFolder);
                 SystemIO.CreateFolderSuperseded(phase.IfcFolder);
                 SystemIO.CreateFolderSuperseded(phase.BswxFolder);
