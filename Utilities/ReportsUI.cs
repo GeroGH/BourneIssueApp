@@ -41,7 +41,7 @@ namespace BourneIssueApp.Utilities
             }
 
             var date = DateTime.Now.ToString("dd.MM.yy");
-            var revNo = (rev == string.Empty) ? string.Empty : " REV " + rev;
+            var revNo = (rev == string.Empty) ? string.Empty : " Rev " + rev;
             var reportName = UserInfo.ModelNumber + "-Phase " + number + reportType + revNo + " " + date + reportFormat;
 
             if (reportName.Contains(".xls"))
