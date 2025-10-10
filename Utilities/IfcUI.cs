@@ -8,7 +8,7 @@ namespace BourneIssueApp.Utilities
     {
         public static void ExportIfcModel(string IfcFolderPath, string rev, int number)
         {
-            var revNo = (rev == string.Empty) ? string.Empty : " REV " + rev;
+            var revNo = (rev == string.Empty) ? string.Empty : " Rev " + rev;
 
             var fileName = Path.Combine(IfcFolderPath, UserInfo.ModelNumber + " PHASE " + number + revNo);
 

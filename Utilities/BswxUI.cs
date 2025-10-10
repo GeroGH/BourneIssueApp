@@ -28,7 +28,7 @@ namespace BourneIssueApp.Utilities
 
         public static void ExportBswxFile(string BswxFolderPath, string rev, string tempNcFolder, string tempPdfFolder, int number)
         {
-            var revNo = (rev == string.Empty) ? string.Empty : " REV " + rev;
+            var revNo = (rev == string.Empty) ? string.Empty : " Rev " + rev;
             var fileName = Path.Combine(BswxFolderPath, UserInfo.ModelNumber + " PHASE " + number + revNo + @".bswx");
 
             var componentInput = new ComponentInput();
@@ -62,7 +62,7 @@ namespace BourneIssueApp.Utilities
         }
         public static void SaveBswxSettings(string BswxFolderPath, string rev, string tempNcFolder, string tempPdfFolder, int number)
         {
-            var revNo = (rev == string.Empty) ? string.Empty : " REV " + rev;
+            var revNo = (rev == string.Empty) ? string.Empty : " Rev " + rev;
 
             var fileName = Path.Combine(BswxFolderPath, UserInfo.ModelNumber + " PHASE " + number + revNo);
 
